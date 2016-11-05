@@ -1,0 +1,35 @@
+String: 165, 385(cannot understand answer)
+Linked List: 142
+Tree: 98, 236(这两题需要注意理解，不能硬背)
+      124. Binary Tree Maximum Path Sum, not understand complete????????
+Bit: 137(updated method)
+     187(Bit method)
+Hash: 3
+Sort: heap, merge
+backtracing: 39. Combination Sum: throught, time,space??
+	     60. Permutation Sequence??
+	         How to analysis time and space in Backtracking, in recursive??	
+ 	     93. Restore IP Addresses, 注意复习, 不能硬背, cannot understand complete????
+	     79. Word search, 注意复习, 不能硬背
+	     131. Palindrome Partitioning, 注意复习, 不能硬背		
+Greedy: 55. Jump Game, Greedy????
+	45. JUmp Game II, Greedy???
+
+Design: 384(cannot understand the part of answer)
+
+
+
+
+Binary Search: 
+162. Find Peak Element
+153. Find Minimum in Rotated Sorted Array
+154. Find Minimum in Rotated Sorted Array II(Hard)
+
+33. Search in Rotated Sorted Array(Hard)
+81. Search in Rotated Sorted Array II
+
+29. divide two integers(very diffcult to understand)
+
+
+/*************需要注意的题**************/
+98(Tree, is valid BST)

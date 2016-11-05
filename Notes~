@@ -1,0 +1,6 @@
+QucikSort: 如果循环使用while(left < rihgt), 则需要从后向前遍历  
+	   如果循环使用while(left <= right), 则从前或从后遍历都可以
+
+
+Priority_Queue: compare function object, 将参数p和q的位置看作是priority_queue中的原始位置， 
+		如果return的值为true, 则将p和q的位置调换(参考Amazon OA1 kcloestpoints)
