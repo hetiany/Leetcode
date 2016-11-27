@@ -62,6 +62,57 @@ public:
     }
 };
 
+//my code, 11/14/2016
+class Solution {
+public:
+    vector<int> maxSlidingWindow(vector<int>& nums, int k) {
+        deque<int> store;
+        int n = nums.size();
+        vector<int> res;
+        for(int i = 0; i < nums.size(); ++i) {
+            while(store.size() && nums[i] > nums[store.back()]) {
+                store.pop_back();
+            }
+            store.push_back(i);
+            if(i + 1 >= k) {
+                cout << nums[store.front()];
+                res.push_back(nums[store.front()]);
+            }
+            if(store.size() && i - k + 1 == store.front()) {
+                store.pop_front();
+            }
+        } 
+        return res;
+    }
+};
+
+
+//my code, 11/17/2016
+class Solution {
+public:
+    vector<int> maxSlidingWindow(vector<int>& nums, int k) {
+        deque<int> store;
+        vector<int> res;
+        if(!nums.size()) {
+            return res;   
+        }
+        int n = nums.size();
+        for(int i = 0; i < n; ++i) {
+            while(!store.empty() && nums[i] > nums[store.back()]) {
+                store.pop_back();
+            }
+            store.push_back(i);
+            if(i >= k - 1) {
+                res.push_back(nums[store.front()]);
+            }
+            if(!store.empty() && store.front() == i - k + 1) {
+                store.pop_front();
+            }
+        }
+        return res;
+    }
+};
+
 
 //my code, 10/24/2016, time limit exceed
 class Solution {

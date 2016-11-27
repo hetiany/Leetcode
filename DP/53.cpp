@@ -72,11 +72,13 @@ public:
         int m = left + ((right - left) >> 1);
         int leftSum = subSum(nums, left, m);
         int rightSum = subSum(nums, m + 1, right);
+
         int sum = 0, middleLeft = INT_MIN, middleRight = INT_MIN; 
         for(int i = m; i >= left ; --i) {
             sum += nums[i];
             middleLeft = max(middleLeft, sum);
         }
+
         for(int i = m + 1, sum = 0; i <= right; ++i) {
             sum += nums[i];
             middleRight = max(middleRight, sum);
@@ -84,3 +86,38 @@ public:
         return max(max(leftSum, rightSum), middleRight + middleLeft);
     }
 };
+
+
+//my code, divide and conquer, 11/14/2016
+class Solution {
+public:
+    int maxSubArray(vector<int>& nums) {
+        if(nums.empty()) {
+            return 0;
+        }    
+        return maxSubSum(nums, 0, nums.size() - 1);
+    }
+    int maxSubSum(vector<int>& nums, int left, int right) {
+        if(left == right) {
+            return nums[left];
+        }
+        int mid = left + (right - left) / 2;
+        int sumLeft = maxSubSum(nums, left, mid);
+        int sumRight = maxSubSum(nums, mid + 1, right);
+        
+        int sum = 0, midLeft = INT_MIN, midRight = INT_MIN;
+        for(int i = mid; i >= left; --i) {
+            sum += nums[i];
+            midLeft = max(midLeft, sum);
+        }
+        sum = 0;
+        for(int i = mid + 1; i <= right; ++i) {
+            sum += nums[i];
+            midRight = max(midRight, sum);
+        }
+        return max(max(sumLeft, sumRight), midLeft + midRight);
+    }
+};
+
+
+

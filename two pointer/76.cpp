@@ -1,4 +1,3 @@
-//Lei
 //S = "ADOBECCODEBANC"
 //T = "ABC"
 
@@ -6,6 +5,7 @@
 //BECCODEBA
 //ODEBANC
 //BANC
+//Lei
 class Solution {
 public:
     string minWindow(string s, string t) {
@@ -22,12 +22,51 @@ public:
                     minStart = start;         
                     minLen = end - start;
                 }
-                if (mp[s[start]] == 0)
+                if (mp[s[start]] == 0) {
                     count++;
+                }         
                 mp[s[start++]]++;
             }
         }
         if (minLen == INT_MAX) return "";
+        return s.substr(minStart, minLen);
+    }
+};
+
+
+//my code, 11/17/2016
+//"bba"   "ab", this example can explain why ++mp[s[start]] should be outside of "if condition"
+class Solution {
+public:
+    string minWindow(string s, string t) {
+        vector<int> mp(128, 0);
+        for(auto c : t) {
+            ++mp[c];
+        }
+        int start = 0, end = 0, minStart = 0, minLen = INT_MAX;
+        int n = s.size(), count = t.size();
+        while(end < n) {
+            if(mp[s[end]] > 0) {
+                --count;
+            }
+            --mp[s[end]];
+            ++end;
+            while(count == 0) {
+                if(end - start < minLen) {
+                    minStart = start;
+                    minLen = end - start;
+                }
+                if(mp[s[start]] == 0) {
+                    ++count;
+                    // ++mp[s[start]];
+                }
+                ++mp[s[start]];
+                ++start;
+            }
+        }
+        if(minLen == INT_MAX) {
+            return "";
+        }
         return s.substr(minStart, minLen);
     }
 };

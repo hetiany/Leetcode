@@ -41,3 +41,28 @@ public:
         return maxPro;
     }
 }; 
+
+
+//my code, 11/14/2017
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        if(!prices.size()) {
+            return 0;
+        }
+        vector<int> dp(prices.size(), 0);
+        dp[0] = prices[0];
+        int maxPro = 0;
+        for(int i = 1; i < prices.size(); ++i) {
+            if(prices[i] <= dp[i - 1]) {
+                dp[i] = prices[i];
+            } else {
+                dp[i] = dp[i - 1];
+            }
+            maxPro = max(maxPro, prices[i] - dp[i]);
+        }
+        
+        return maxPro;
+    }
+    
+};

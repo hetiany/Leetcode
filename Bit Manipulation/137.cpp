@@ -77,6 +77,26 @@ public:
 };
 
 
+//my code, 11/14/2016
+class Solution {
+public:
+    int singleNumber(vector<int>& nums) {
+        int res = 0;
+        int record = 0;
+        for(int i = 0; i < 32; ++i) {
+            for(int j = 0; j < nums.size(); ++j) {
+                record += nums[j] >> i & 1;
+            }
+            int temp;
+            temp = record % 3 << i;
+            res += temp;
+            record = 0;
+        }
+        return res;
+    }
+};
+
+
 int main(){
 	int i = 10;
 	//int n = ~i;
