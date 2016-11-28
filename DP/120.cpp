@@ -82,3 +82,32 @@ public:
     }
 };
 
+//my code, 11/28/2016
+class Solution {
+public:
+    int minimumTotal(vector<vector<int>>& triangle) {
+        if(!triangle.size()) {
+            return 0;
+        }
+        int res = INT_MAX;
+        int row = triangle.size();
+        vector<vector<int> > record(row, vector<int>(row, 0));
+        record[0][0] = triangle[0][0];
+        for(int i = 1; i < row; ++i) {
+            record[i][0] = record[i-1][0] + triangle[i][0];
+            record[i][i] = record[i-1][i-1] + triangle[i][i];
+        }
+        
+        for(int i = 1; i < row; ++i) {
+            for(int j = 1; j < i; ++j) {
+                record[i][j] = triangle[i][j] + min(record[i-1][j], record[i-1][j-1]);
+                
+            }
+        }
+        for(int i = 0; i < row; ++i) {
+            res = min(res, record[row-1][i]);
+        }
+        return res;
+    }
+};
+
