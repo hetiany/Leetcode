@@ -105,19 +105,22 @@ using namespace std;
     }
 }*/
 
+/*************************     There are four kinds of method for sorting, using quick sort    ****************/
 
-//Lei Zhang, this is better
-void quickSort(int nums[], int left, int right ){
+//Lei Zhang, this is better, from small to large
+//pivot begin from left
+/*void quickSort(int nums[], int left, int right ){
+    //For here, I can use if(left <= right) 
     if(left < right){
         int pivot = nums[left];
         int l = left + 1, r = right;
         while(l <= r){
-            //can change the sequence of r-- and l++
-            while(l <= r && nums[r] >= pivot) {
-                r--;
-            }
+            //can change the sequence of r-- and l++           
             while(l <= r && nums[l] <= pivot) {
                 l++;
+            }
+            while(l <= r && nums[r] >= pivot) {
+                r--;
             }
             if(l < r) {
                 swap(nums[l++], nums[r--]);
@@ -128,6 +131,82 @@ void quickSort(int nums[], int left, int right ){
         quickSort(nums, r + 1, right);
     }
 }
+
+
+//Lei, from large to small
+void quickSort(int nums[], int left, int right ){
+    if(left < right){
+        int pivot = nums[left];
+        int l = left + 1, r = right;
+        while(l <= r){
+            //can change the sequence of r-- and l++            
+            while(l <= r && nums[l] >= pivot) {
+                l++;
+            }
+            while(l <= r && nums[r] <= pivot) {
+                r--;
+            }
+            if(l < r) {
+                swap(nums[l++], nums[r--]);
+            }
+        }
+        swap(nums[r], nums[left]);
+        quickSort(nums, left, r - 1);
+        quickSort(nums, r + 1, right);
+    }
+}
+
+
+//Lei, from samll to large
+//pivot begin from right
+void quickSort(int nums[], int left, int right ){
+    if(left < right) {
+        //int pivot = nums[left];
+        int pivot = nums[right];
+        int l = left, r = right - 1;
+        while(l <= r){
+            //can change the sequence of r-- and l++   
+            while(l <= r && nums[l] <= pivot) {
+                l++;
+            }
+            while(l <= r && nums[r] >= pivot) {
+                r--;
+            }
+            if(l < r) {
+                swap(nums[l++], nums[r--]);
+            }
+        }
+        swap(nums[l], nums[right]);
+        quickSort(nums, left, l - 1);
+        quickSort(nums, l + 1, right);
+    }
+}
+
+//Lei, from large to samll
+void quickSort(int nums[], int left, int right ){
+    if(left < right) {
+        //int pivot = nums[left];
+        int pivot = nums[right];
+        int l = left, r = right - 1;
+        while(l <= r){
+            //can change the sequence of r-- and l++            
+            while(l <= r && nums[l] >= pivot) {
+                l++;
+            }
+            while(l <= r && nums[r] <= pivot) {
+                r--;
+            }
+            if(l < r) {
+                swap(nums[l++], nums[r--]);
+            }
+        }
+        swap(nums[l], nums[right]);
+        quickSort(nums, left, l - 1);
+        quickSort(nums, l + 1, right);
+    }
+}*/
+
+/***********************************     End     ***************************************/
 
 
 //quick sort, 06/22/2016
@@ -155,30 +234,30 @@ void quickSort(int nums[], int left, int right ){
 }*/
 
 //10/04/2016
-void quickSort(int num[], int left, int right) {
-    if(left < right) {
-        int pivot = num[left];
-        int l = left + 1;
-        int r = right;
-        while(l <= r) {
-            while(l <= r && pivot >= num[l]) {
-                ++l;
-            }
-            while(l <= r && pivot <= num[r]) {
-                --r;
-            }
-            if(l <= r) {
-                swap(num[l], num[r]);
-                ++l;
-                --r;
-            }       
-        }
-        swap(num[left], num[r]);
-        quickSort(num, left, r - 1);
-        quickSort(num, r + 1, right);
-    }
+// void quickSort(int num[], int left, int right) {
+//     if(left < right) {
+//         int pivot = num[left];
+//         int l = left + 1;
+//         int r = right;
+//         while(l <= r) {
+//             while(l <= r && pivot >= num[l]) {
+//                 ++l;
+//             }
+//             while(l <= r && pivot <= num[r]) {
+//                 --r;
+//             }
+//             if(l <= r) {
+//                 swap(num[l], num[r]);
+//                 ++l;
+//                 --r;
+//             }       
+//         }
+//         swap(num[left], num[r]);
+//         quickSort(num, left, r - 1);
+//         quickSort(num, r + 1, right);
+//     }
 
-}
+// }
 
 
 /*void quickSort(int v[], int begin, int end){
@@ -194,12 +273,8 @@ void quickSort(int num[], int left, int right) {
 }*/
 
 
-
-
-
-
 int main() {  
-    int array[] = {27, 26, 25, 24}, k;  
+    int array[] = {3, 2, 5, 4, 7, 6}, k;  
     int len = sizeof(array)/sizeof(int);  
 
     cout << "The orginal arrayare:" << endl;  

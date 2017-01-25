@@ -80,11 +80,11 @@ void merge_sort(vector<int>& nums, int left, int right) {
 }*/
 
 //my code, merge sort
-void merge_array(vector<int>& nums, int left, int mid, int right) {
+/*void merge_array(vector<int>& nums, int left, int mid, int right) {
     vector<int> store(right - left + 1);
     int l = left, m = mid + 1, r = right, temp = 0;
    
-    while(l <= mid && m <= r) {
+    while(l <= mid && m <= right) {
         if(nums[l] <= nums[m]) {
             store[temp++] = nums[l++];
         } else {
@@ -113,13 +113,12 @@ void merge_sort(vector<int>& nums, int left, int right) {
         merge_sort(nums, mid + 1, right);
         merge_array(nums, left, mid, right);
     }
-}
-
+}*/
 
 
 
 //10/04/2016, merge sort
-void merge_array(vector<int>& num, int right, int mid, int left) {
+/*void merge_array(vector<int>& num, int right, int mid, int left) {
     vector<int> store(right - left + 1);
     int m = mid + 1, l = left, temp = 0;
     while(l <= mid && m <= right) {
@@ -150,8 +149,7 @@ void merge_sort(vector<int>& num, int left, int right) {
         merge_sort(num, mid + 1, right);
         merge_array(num, left, mid, right);
     }
-}   
-
+}*/   
 
 
 int main() {  
@@ -165,4 +163,4 @@ int main() {
 
     cout << endl;  
     return 0;  
-}
+} 

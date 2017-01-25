@@ -51,6 +51,7 @@ vector<Point> findKCloest(vector<Point> p, int k)
 			}
 		}
 	}
+	
 	vector<Point> res;
 	while (!pq.empty())
 	{
@@ -69,7 +70,7 @@ int main(int argc, char const *argv[])
 
 	for (auto i : res)
 	{
-		cout << i.x << i.y <<"\n";
+		cout << i.x << " " << i.y <<"\n";
 	}
 	return 0;
 }

@@ -123,34 +123,37 @@ public:
     }
     
     int get_result(vector<int>& nums, int k, int left, int right) {
-        int pivot = nums[left];
-        int l = left + 1, r = right;
-        while(l <= r) {
-            while(l <= r && nums[l] >= pivot) {
-                ++l;
+        //For here, I can use if(left <= right)
+        //if(left <= right) { 
+            int pivot = nums[left];
+            int l = left + 1, r = right;
+            while(l <= r) {
+                while(l <= r && nums[l] >= pivot) {
+                    ++l;
+                }
+                while(l <= r && nums[r] <= pivot) {
+                    --r;
+                }
+                if(l <= r) {
+                    swap(nums[l], nums[r]);
+                    ++l;
+                    --r;
+                }
             }
-            while(l <= r && nums[r] <= pivot) {
-                --r;
+            
+            swap(nums[left], nums[r]);
+            
+            if(k == r + 1) {
+                return nums[r];
             }
-            if(l <= r) {
-                swap(nums[l], nums[r]);
-                ++l;
-                --r;
+            if(k > r + 1) {
+                return get_result(nums, k, r + 1, right);
             }
-        }
-        
-        swap(nums[left], nums[r]);
-        
-        if(k == r + 1) {
-            return nums[r];
-        }
-        if(k > r + 1) {
-            return get_result(nums, k, r + 1, right);
-        }
-        if(k < r + 1) {
-            return get_result(nums, k, left, r - 1);
-        }
-        return 0;
+            if(k < r + 1) {
+                return get_result(nums, k, left, r - 1);
+            }
+            return 0;
+        //} 
     }
 };
 

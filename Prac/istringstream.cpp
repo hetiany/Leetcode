@@ -16,12 +16,14 @@ int main() {
 	istringstream in(store);
 	string word;
 	vector<string> result;
+	int i = 0;
 	while(in >> word) {
+		cout << i++ << endl;
 		if(!word.empty()) {
 			result.push_back(word);
 		}
 	}
-
+	cout << "rest: " << in << endl;
 	for(int i = 0; i < result.size(); ++i) {
 		cout << result[i] << endl;
 	}

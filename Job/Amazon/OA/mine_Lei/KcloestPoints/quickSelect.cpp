@@ -2,15 +2,18 @@
 #include <queue>          // std::priority_queue
 #include <vector> 
 using namespace std;
+
 class Point {
 public:
 	int x, y;
 	Point(int a, int b) : x(a), y(b) {} 
 };
+
 bool operator<=(const Point& p, const Point& q)
 {
 	return ((p.x * p.x + p.y * p.y) <= (q.x * q.x + q.y * q.y));
 }
+
 bool operator>=(const Point& p, const Point& q)
 {
 	return ((p.x * p.x + p.y * p.y) >= (q.x * q.x + q.y * q.y));
@@ -30,6 +33,7 @@ int partition(vector<Point>& p, int left, int right)
 		swap (p[left], p[r]);//shouldn't be pivot
 		return r;
 }
+
 vector<Point> findKCloest(vector<Point>& p, int k)
 {
 	int left = 0, right = p.size() - 1;

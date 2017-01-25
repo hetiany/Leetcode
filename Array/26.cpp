@@ -24,6 +24,37 @@ public:
         
 };
 
+//my code, 1/21/2017
+class Solution {
+public:
+    int removeDuplicates(vector<int>& nums) {
+        if(nums.size() == 0 || nums.size() == 1) {
+            return nums.size();
+        }
+        int last = 1;
+        for(int cur = 1; cur < nums.size(); ++cur) {
+            if(nums[cur] != nums[cur - 1]) {
+                nums[last] = nums[cur];
+                ++last;
+            }
+        }
+        return last;
+    }
+};
+
+
+//find online, this is better
+class Solution {
+public:
+    int removeDuplicates(vector<int>& nums) {
+        int i = 0;
+        for (int n : nums)
+            if (i < 1 || n > nums[i - 1])
+                nums[i++] = n;
+        return i;
+    }
+};
+
 
 /*class Solution {
 public:

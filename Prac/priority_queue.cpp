@@ -26,7 +26,7 @@ private:
 
 
 int main () {
-  int myints[]= {10,60,50,20};
+  int myints[] = {10,60,50,20};
 
   std::priority_queue<int> first;
   std::priority_queue<int> second(myints,myints + 4);
